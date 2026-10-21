@@ -1,0 +1,519 @@
+/* =========================================
+   CampusPath AI Authentication
+   ========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.auth-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  background: #080d1d;
+  color: #f8fafc;
+  font-family: Inter, Arial, sans-serif;
+}
+
+/* =========================================
+   LEFT SIDE
+   ========================================= */
+
+.auth-left {
+  width: 50%;
+  min-height: 100vh;
+  padding: 55px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(91, 74, 255, 0.12),
+      transparent 35%
+    ),
+    #080d1d;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    #695cff,
+    #14b8ff
+  );
+  color: white;
+  font-weight: 800;
+}
+
+.logo-ai {
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.hero-content {
+  max-width: 580px;
+  margin-top: 30px;
+}
+
+.hero-content h1 {
+  font-size: 44px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+}
+
+.hero-content p {
+  color: #9ba8c4;
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 540px;
+}
+
+.feature-list {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #d9e0f0;
+  font-size: 15px;
+}
+
+.feature-check {
+  color: #22c55e;
+  font-size: 18px;
+}
+
+.match-card {
+  margin-top: 35px;
+  width: 365px;
+  padding: 20px;
+  border-radius: 18px;
+  border: 1px solid #27314a;
+  background: #151c30;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  color: #9aa7c1;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.match-score {
+  color: #b18cff;
+  background: #251c43;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.match-card h3 {
+  margin: 15px 0 7px;
+  font-size: 16px;
+}
+
+.match-card p {
+  font-size: 13px;
+  margin: 0;
+  color: #8793ad;
+}
+
+.match-points {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.match-points span {
+  color: #9da9c1;
+  font-size: 12px;
+}
+
+.auth-footer {
+  color: #53617c;
+  font-size: 13px;
+}
+
+/* =========================================
+   RIGHT SIDE
+   ========================================= */
+
+.auth-right {
+  width: 50%;
+  min-height: 100vh;
+  background: #f7f8fc;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 470px;
+}
+
+.auth-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.auth-heading h2 {
+  font-size: 29px;
+  margin: 0 0 8px;
+  letter-spacing: -0.7px;
+}
+
+.auth-heading p {
+  margin: 0;
+  color: #697386;
+  font-size: 14px;
+}
+
+.theme-button {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  border: 1px solid #dfe3eb;
+  background: white;
+  cursor: pointer;
+}
+
+/* =========================================
+   ROLE SELECTOR
+   ========================================= */
+
+.role-label {
+  margin-top: 30px;
+  margin-bottom: 12px;
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.role-button {
+  min-height: 66px;
+  border: 1px solid #dce1ea;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: #344054;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.role-button:hover {
+  border-color: #6256e8;
+}
+
+.role-button.active {
+  border-color: #6256e8;
+  background: #f0eeff;
+  color: #4c3fd3;
+}
+
+.role-icon {
+  display: block;
+  font-size: 19px;
+  margin-bottom: 5px;
+}
+
+/* =========================================
+   FORM
+   ========================================= */
+
+.auth-form {
+  margin-top: 25px;
+}
+
+.input-group {
+  margin-bottom: 17px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #344054;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #d9dee8;
+  border-radius: 9px;
+  padding: 0 15px;
+  outline: none;
+  font-size: 14px;
+  background: white;
+  color: #172033;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #6256e8;
+  box-shadow: 0 0 0 3px rgba(98, 86, 232, 0.1);
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 70px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #667085;
+}
+
+/* =========================================
+   REMEMBER / FORGOT
+   ========================================= */
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 7px 0 22px;
+  font-size: 13px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.remember input {
+  accent-color: #6256e8;
+}
+
+.link-button {
+  border: none;
+  background: none;
+  color: #5146d8;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* =========================================
+   PRIMARY BUTTON
+   ========================================= */
+
+.primary-button {
+  width: 100%;
+  height: 51px;
+  border: none;
+  border-radius: 9px;
+  background: #6256e8;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.primary-button:hover {
+  background: #5146d8;
+}
+
+.primary-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   OTP
+   ========================================= */
+
+.otp-container {
+  margin-top: 35px;
+}
+
+.otp-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  background: #eeecff;
+  color: #5b4ee0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.otp-container h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.otp-container p {
+  color: #667085;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.otp-email {
+  font-weight: 700;
+  color: #344054;
+}
+
+.otp-input {
+  width: 100%;
+  height: 60px;
+  margin: 22px 0;
+  border: 2px solid #d9dee8;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 26px;
+  letter-spacing: 10px;
+  outline: none;
+}
+
+.otp-input:focus {
+  border-color: #6256e8;
+}
+
+.otp-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.otp-secondary {
+  border: none;
+  background: transparent;
+  color: #6256e8;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.otp-secondary:disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   MESSAGES
+   ========================================= */
+
+.error-message {
+  margin: 15px 0;
+  padding: 11px 13px;
+  border-radius: 8px;
+  background: #fff1f2;
+  color: #be123c;
+  font-size: 13px;
+}
+
+.success-message {
+  margin: 15px 0;
+  padding: 11px 13px;
+  border-radius: 8px;
+  background: #ecfdf3;
+  color: #027a48;
+  font-size: 13px;
+}
+
+/* =========================================
+   BOTTOM LINK
+   ========================================= */
+
+.auth-switch {
+  text-align: center;
+  margin-top: 25px;
+  color: #667085;
+  font-size: 14px;
+}
+
+.auth-switch button {
+  border: none;
+  background: none;
+  color: #5146d8;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+  .auth-page {
+    flex-direction: column;
+  }
+
+  .auth-left {
+    width: 100%;
+    min-height: auto;
+    padding: 35px 25px;
+  }
+
+  .auth-right {
+    width: 100%;
+    min-height: auto;
+    padding: 40px 25px;
+  }
+
+  .hero-content h1 {
+    font-size: 34px;
+  }
+
+  .match-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .role-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+}
