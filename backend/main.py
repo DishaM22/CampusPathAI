@@ -290,31 +290,25 @@ def start_warm_up():
 # CORS
 # ============================================================
 
-# ============================================================
-# CORS
-# ============================================================
+FRONTEND_URL = os.getenv("FRONTEND_URL", "")
 
-# ============================================================
-# CORS
-# ============================================================
+allowed_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174",
+]
+
+if FRONTEND_URL:
+    allowed_origins.append(FRONTEND_URL.rstrip("/"))
 
 app.add_middleware(
     CORSMiddleware,
-
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:5174",
-        "http://127.0.0.1:5174",
-    ],
-
+    allow_origins=allowed_origins,
     allow_credentials=True,
-
     allow_methods=["*"],
-
     allow_headers=["*"],
 )
-
 
 # ============================================================
 # PASSWORD HASHING
@@ -325,9 +319,9 @@ password_hash = PasswordHash.recommended()
 # Password recovery email configuration
 SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
-SMTP_EMAIL = os.getenv("CAMPUSPATH_SMTP_EMAIL", "")
+SMTP_EMAIL = os.getenv("SMTP_EMAIL", "")
 # Google shows app passwords in 4 groups with spaces; SMTP wants them without.
-SMTP_APP_PASSWORD = os.getenv("CAMPUSPATH_SMTP_APP_PASSWORD", "").replace(" ", "")
+SMTP_APP_PASSWORD = os.getenv("SMTP_APP_PASSWORD", "").replace(" ", "")
 
 # Shows up in the uvicorn terminal
 mail_logger = logging.getLogger("uvicorn.error")
@@ -367,7 +361,10 @@ def hash_reset_otp(otp: str) -> str:
 # JWT CONFIGURATION
 # ============================================================
 
-SECRET_KEY = "campuspath-development-secret"
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+if not SECRET_KEY:
+    raise RuntimeError("SECRET_KEY environment variable is not configured")
 
 ALGORITHM = "HS256"
 

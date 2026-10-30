@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 backend/.env
 backend/venv/
+
+# User uploaded files
+backend/uploads/

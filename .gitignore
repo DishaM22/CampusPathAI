@@ -21,3 +21,5 @@ node_modules/
 **/node_modules/
 dist/
 **/dist/
+# User uploaded files
+backend/uploads/
